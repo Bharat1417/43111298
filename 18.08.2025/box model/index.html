@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Box Model Demo</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+  <div class="Box">
+    <h2>CSS Box Model Demonstration</h2>
+
+    
+    <div class="Box1" id="box1">
+      <div class="Box2" id="box2">
+        <p>Content</p>
+      </div>
+    </div>
+
+   
+    <div class="Box3">
+      <div class="control">
+        <label for="marginSlider">Margin:</label>
+        <input type="range" id="marginSlider" min="5" max="100" value="20">
+        <span id="marginValue">20px</span>
+      </div>
+
+      <div class="control">
+        <label for="borderSlider">Border:</label>
+        <input type="range" id="borderSlider" min="5" max="100" value="5">
+        <span id="borderValue">5px</span>
+      </div>
+
+      <div class="control">
+        <label for="paddingSlider">Padding:</label>
+        <input type="range" id="paddingSlider" min="5" max="100" value="30">
+        <span id="paddingValue">30px</span>
+      </div>
+    </div>
+
+  
+    <div class="Box4">
+      <h2>Box Model Components</h2>
+      <div class="legend-item">
+        <span class="box margin"></span>
+        <strong>Margin</strong> - Space outside the border
+      </div>
+      <div class="legend-item">
+        <span class="box border"></span>
+        <strong>Border</strong> - Surrounds the padding and content
+      </div>
+      <div class="legend-item">
+        <span class="box padding"></span>
+        <strong>Padding</strong> - Space between border and content
+      </div>
+      <div class="legend-item">
+        <span class="box content"></span>
+        <strong>Content</strong> - Actual content of the box
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

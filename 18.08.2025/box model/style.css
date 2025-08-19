@@ -1,0 +1,90 @@
+body {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+.Box {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(224, 221, 214);
+  width: 800px;
+  align-items: center;
+  padding: 20px;
+}
+
+.Box1 {
+  background-color: rgb(236, 171, 28);
+  width: 300px;
+  height: 300px;
+  border: 5px solid rgb(209, 142, 16);
+  padding: 30px;
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Box2 {
+  background-color: rgb(50, 69, 236);
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+}
+
+.Box3 {
+  background-color: rgb(183, 184, 190);
+  width: 700px;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  text-align: left;
+}
+
+.control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+input[type="range"] {
+  flex: 1;
+  margin: 0 10px;
+  accent-color: purple;
+}
+
+.Box4 {
+  background-color: #f9f9f9;
+  width: 700px;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+  color: #333;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  font-size: 14px;
+}
+
+.legend-item .box {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.margin { border: 2px dashed #555; background: transparent; }
+.border { background-color: #e67e22; }
+.padding { background-color: #f1c40f; }
+.content { background-color: #3498db; }
