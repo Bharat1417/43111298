@@ -1,0 +1,32 @@
+#foriegn key
+use sathyabama;
+CREATE TABLE category (
+    cid INT PRIMARY KEY,
+    cname VARCHAR(50) NOT NULL,
+    cdes VARCHAR(200)
+);
+CREATE TABLE product (
+    pid INT PRIMARY KEY,
+    pname VARCHAR(50) NOT NULL,
+    pdes VARCHAR(200),
+    cid INT,
+    FOREIGN KEY (cid) REFERENCES category(cid)
+);
+desc category;
+desc product;
+
+INSERT INTO category (cid, cname, cdes) VALUES
+(1, 'Electronics', 'Mobile'),
+(2, 'Clothing', 'Shirt'),
+(3, 'Furniture', 'Wardrobe');
+select * from category;
+
+INSERT INTO product (pid, pname, pdes, cid) VALUES
+(101, 'Smartphone', 'android 6', 1),
+(102, 'Laptop', 'rtx 4050', 1),
+(103, 'T-Shirt', 'cotton', 2),
+(104, 'Rice', 'biriyani ', 3);
+select * from product;
+
+select * from product where cid=1;
+
