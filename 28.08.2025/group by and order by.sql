@@ -1,0 +1,118 @@
+use sathyabama;
+
+#order by
+select first_name, last_name, salary from workers
+order by salary asc;
+
+select * from workers order by first_name asc;
+# department ascending, salary descending
+select first_name, last_name, department, salary from workers
+order by department asc, salary desc;
+
+#group by
+select department, count(*) as total_workers from workers
+group by department;
+
+#average salary
+select department, avg(salary) as avg_salary from workers
+group by department;
+
+select count(*) as no_of_workers, joining_date from worker 
+group by joining_date;
+
+select count(*) as worker, salary from workers
+group by salary;
+
+#group by and order by
+select department, max(salary) as highest_salary from workers
+group by department
+order by highest_salary desc;
+
+select department, avg(salary) as avg_salary from workers
+group by department
+order by avg_salary desc;
+
+select department, count(department) from workers
+group by department
+order by count(department) desc;
+
+#1. Count employees not in HR or Admin.
+select count(*) from workers where department not in ('hr', 'admin');
+
+#2. Find the highest salary in each department.
+select Department, max(salary) from workers 
+group  by department;
+ 
+
+#uppercase,lowercase, ltrim, rtrim, offset,limit, limit offset, rownumber
+
+#limit
+select * from workers order by salary limit 1;
+
+SELECT * FROM Worker
+WHERE WORKER_ID NOT IN (1,2,4,5)
+    ORDER BY WORKER_ID
+    LIMIT 2;
+   
+#offset
+select *
+from workers
+order by worker_id
+offset 5 ;
+
+select *
+from workers
+order by worker_id
+limit 1 offset 5 ;
+
+SELECT * FROM Worker
+ORDER BY WORKER_ID desc
+OFFSET 5 ROWS FETCH NEXT 10 ROWS ONLY;  
+
+select * from workers
+order by worker_id
+limit 3 offset 5;
+
+
+#upper case
+select upper(first_name) as first_name,
+       upper(last_name) as last_name
+from workers;
+
+select upper(department) from workers;
+
+#lower case
+select lower(first_name) from workers;
+
+
+SELECT CONCAT(
+    UPPER(LEFT(First_Name, 1)), 
+    LOWER(SUBSTRING(First_Name,2 ))
+) AS Proper_Case
+FROM Worker;
+
+#concat
+SELECT UPPER(CONCAT(FIRST_NAME, '😁', LAST_NAME)) AS FULL_NAME
+FROM WORKERS;
+
+#row number
+SELECT * FROM (
+    SELECT *, ROW_NUMBER() OVER (ORDER BY WORKER_ID) AS rn
+    FROM Workers
+) AS temp
+WHERE rn < 5;
+
+#ltrim
+select ltrim(last_name) as clean_last_name
+from workers;
+
+select ltrim('            12345') as result;
+
+#rtrim
+select rtrim(first_name) as clean_first_name
+from workers;
+
+select rtrim('12345           _                              ') as result;
+
+
+
