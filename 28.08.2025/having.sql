@@ -1,0 +1,27 @@
+use sathyabama;
+
+#having class
+
+select department, count(department) as count from workers 
+group by department having count>2;
+
+select department, sum(salary) as sum from workers
+group by department having sum>100000;
+
+#1. Find departments with average salary > 100000.
+select department, sum(salary) as sum from workers
+group by department having sum>100000;
+
+#2. Find departments where max salary is exactly 500000.
+select department, max(salary) from workers 
+group by department having max(salary)=500000;
+
+#3. Find departments with more than 1 employee and total salary > 100000.
+select department, count(*)  as emp, sum(salary) as sum from workers
+group by department
+having emp>1 and sum>100000;
+
+#4. Find departments with avg salary between 50000 and 200000.
+select department, avg(salary) as avg from workers
+group by department 
+having avg between 50000 and 200000;
