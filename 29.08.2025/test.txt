@@ -1,0 +1,12 @@
+test 
+1. select first_name as WORKER_NAME from worker ;
+2. select upper(first_name) as uppercase_first_name from worker;
+3. select distinct(department) as unique_department from worker;
+4. select rtrim(first_name) as after_removing_whitespace from worker;
+5. select * from worker order by first_name asc;
+6. select * from worker order by first_name asc , department desc;
+7. select * from worker where first_name in ('vipul', 'satish');
+8. select * from worker where first_name like '%a%';
+9. select * from worker where first_name like '%a';
+10. select * from worker where first_name like '______h';
+ 

@@ -1,0 +1,72 @@
+create database joins;
+use joins;
+
+-- Table 1: Students
+CREATE TABLE Students (
+    student_id INT PRIMARY KEY,
+    student_name VARCHAR(50),
+    course_id INT
+);
+
+-- Insert sample data
+INSERT INTO Students (student_id, student_name, course_id) VALUES
+(1, 'Amit', 101),
+(2, 'Bharat', 102),
+(3, 'Divya', 103),
+(4, 'Kiran', NULL);
+
+-- Table 2: Courses
+CREATE TABLE Courses (
+    course_id INT PRIMARY KEY,
+    course_name VARCHAR(50)
+);
+
+-- Insert sample data
+INSERT INTO Courses (course_id, course_name) VALUES
+(101, 'Database Systems'),
+(102, 'Computer Networks'),
+(104, 'Operating Systems');
+
+#cross join
+SELECT s.student_id, s.student_name, c.course_id, c.course_name
+FROM Students s
+CROSS JOIN Courses c;
+
+select s.student_id, s.student_name, c.course_name
+from students s
+cross join courses c;
+
+#inner join
+SELECT s.student_id, s.student_name, c.course_name
+FROM Students s
+INNER JOIN Courses c ON s.course_id = c.course_id;
+
+select s.student_id, s.student_name
+from students s
+inner join courses c on s.course_id = c.course_id;
+
+#left join
+select s.student_id, s.student_name, c.course_name 
+from students s
+left join courses c on s.course_id = c.course_id;
+
+select s.student_id, s.student_name, c.course_name 
+from courses c
+left join students s on s.course_id = c.course_id;
+
+#right join
+select s.student_id, s.student_name, c.course_name 
+from students s
+right join courses c on s.course_id = c.course_id;
+
+select s.student_id, s.student_name, c.course_name 
+from courses c	
+right join students s on s.course_id = c.course_id;
+
+#full join
+select s.student_id, s.student_name, c.course_name 
+from students s
+full outer join courses c on s.course_id = c.course_id;
+
+
+
