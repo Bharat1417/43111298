@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lexend+Giga:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Rock Paper Scissors</title>
+    <style>
+        body {
+            font-family: 'Lexend Giga', sans-serif;
+        }
+        h3, p, td, button {
+            font-family: 'Montserrat', sans-serif;
+        }
+        .container {
+            border: 20px double black;
+            margin: 300px 500px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        .choice {
+            border: 5px solid black;
+            width: 200px;
+            text-align: center;
+            margin: 15px ;
+            height: 50px;
+        }
+        .choice td {
+            border: 5px dotted black;
+        }
+        button {
+            border: none;
+            background: none;
+            cursor: pointer;
+            border: 2px solid rgb(112, 112, 112); 
+            border-radius: 100%;
+            padding: 5px;
+        }
+
+        img {
+            width: 50px;
+            height: 50px;
+            border-radius: 100%;
+            padding: 30px;
+        }
+        button:hover img {
+            background-color: rgb(174, 131, 214);
+        }
+        button.reset {
+            border: 2px solid black;
+            border-radius: 5px;
+            padding: 8px 15px;
+            background-color: white;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        button.reset:hover {
+            background-color: rgb(220, 220, 220);
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Rock Paper Scissors</h1>
+        <div>
+            <button onclick="play('Rock')"><img src="./assets/rock.jpg"></button>
+            <button onclick="play('Paper')"><img src="./assets/paper.jpg"></button>
+            <button onclick="play('Scissor')"><img src="./assets/scissor.jpg"></button>
+        </div>
+        <p id="game-result">-</p>
+        <table class="choice">
+            <tr>
+                <td><h2>You</h2></td>
+                <td><h2>Computer</h2></td>
+            </tr>
+            <tr>
+                <td><img id="user-choice" src="./assets/paper.jpg" style="height: 100px; width: 100px;"></td>
+                <td><img id="computer-choice" src="./assets/paper.jpg" style="height: 100px; width: 100px;"></td>
+            </tr>
+        </table>
+        
+        <!-- Updated table for Wins, Losses, and Ties -->
+        <table>
+            <tr>
+                <td><h3>Wins: <span id="wins">0</span></h3></td>
+                <td><h3>Losses: <span id="losses">0</span></h3></td>
+                <td><h3>Ties: <span id="ties">0</span></h3></td>
+            </tr>
+        </table>
+        
+        <button class="reset" onclick="reset()">Reset</button>
+        
+        <script>
+            const userChoiceImg = document.getElementById('user-choice');
+            const computerChoiceImg = document.getElementById('computer-choice');
+            const gameResult = document.getElementById('game-result');
+
+            let wins = 0, losses = 0, ties = 0, matches = 0;
+
+            function play(userChoice) {
+                matches++;
+                let compChoice = getRandom();
+
+                userChoiceImg.src = `./assets/${userChoice.toLowerCase()}.jpg`;
+                computerChoiceImg.src = `./assets/${compChoice.toLowerCase()}.jpg`;
+                
+                if ((userChoice === 'Rock' && compChoice === 'Scissor') ||
+                    (userChoice === 'Paper' && compChoice === 'Rock') ||
+                    (userChoice === 'Scissor' && compChoice === 'Paper')) {
+                    gameResult.innerHTML = 'You win';
+                    wins++;
+                } else if (userChoice === compChoice) {
+                    gameResult.innerHTML = 'Game is Tie';
+                    ties++;
+                } else {
+                    gameResult.innerHTML = 'You lose';
+                    losses++;
+                }
+                updateScore();
+
+                if (matches === 5) {
+                    setTimeout(() => {
+                        alert(wins > losses ? 'You win' : losses > wins ? 'You lose' : 'Game is tie');
+                        reset();
+                    }, 10);
+                }
+            }
+
+            function reset() {
+                wins = losses = ties = matches = 0;
+                updateScore();
+                gameResult.innerHTML = '-';
+                userChoiceImg.src = `./assets/paper.jpg`;
+                computerChoiceImg.src = `./assets/paper.jpg`;
+            }
+
+            function updateScore() {
+                document.getElementById("wins").innerText = wins;
+                document.getElementById("losses").innerText = losses;
+                document.getElementById("ties").innerText = ties;
+            }
+
+            function getRandom() {
+                return ['Rock', 'Paper', 'Scissor'][Math.floor(Math.random() * 3)];
+            }
+        </script>
+    </div>
+</body>
+</html>
