@@ -1,0 +1,23 @@
+.nav-menu {
+  list-style-type: none;        /* BLANK 3 */
+  padding: 0;
+  margin: 0;
+  background-color: #333;
+}
+
+.nav-item {
+  display: inline-block;        /* BLANK 4 */
+}
+
+.nav-item a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.nav-item.active {
+  background-color: #007BFF;
+  color: white;                 /* BLANK 5 */
+}
